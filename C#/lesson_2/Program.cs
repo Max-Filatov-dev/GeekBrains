@@ -16,16 +16,17 @@ Console.WriteLine($"Second digit: {CutNumber(num: 357)}");
 
 void ThirdDigit(int num)
 {
-    if (num < 100) Console.WriteLine($"The number {num} is not three digits!");
+    if (num < 100)
+        Console.WriteLine($"The number {num} is not three digits!");
     else
     {
         while (num > 999)
-    {
-        // цикл делит num до трехзначного числа
-        num /= 10;
-        // Console.WriteLine(num);
-    }
-    Console.WriteLine($"Third digit: {num % 10}");
+        {
+            // цикл делит num до трехзначного числа
+            num /= 10;
+            // Console.WriteLine(num);
+        }
+        Console.WriteLine($"Third digit: {num % 10}");
     }
 }
 
