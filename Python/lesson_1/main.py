@@ -4,7 +4,6 @@ def check_data():
         # Проверка на пустату и отсутствие букв
         if number.isdigit():
             return number
-            # break
         else:
             print('\nНе корректные данные! (Только натуральное число: N > 0...)\n(Для выхода нажать Ctrl + C)')
 
