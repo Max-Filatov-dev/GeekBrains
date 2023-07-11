@@ -21,13 +21,10 @@ def check_data(*, message: str) -> str:
 
 def repeat_numbers(*, first: int, second: int):
     """ """
-    # print(first, second)
-    first_list = [randint(0, first) for _ in range(first)]
-    second_list = [randint(0, second) for _ in range(second)]
-    repeat_numbers = set(
-        [number for number in first_list if number in second_list])
-    print(
-        f'\n{first_list}\n{second_list}\nRepeat numbers: {sorted(repeat_numbers)}\n')
+    first_list = [randint(0, 30) for _ in range(first)]
+    second_list = [randint(0, 30) for _ in range(second)]
+    repeat_numbers = set([number for number in first_list if number in second_list])
+    print(f'\n{first_list}\n{second_list}\nRepeat numbers: {sorted(repeat_numbers)}\n')
 
 
 """
@@ -48,7 +45,7 @@ def max_berries():
         max_b = berries[i] + berries[i-1] + berries[i-2]
         if max_b > max_berries:
             max_berries = max_b
-    print(f'Max sum: {max_berries}\n')
+    print(f'Max sum berries: {max_berries}\n')
 
 
 def main():
