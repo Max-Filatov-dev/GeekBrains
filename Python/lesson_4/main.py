@@ -38,11 +38,10 @@ def repeat_numbers(*, first: int, second: int):
 def max_berries():
     """ number_kysts :D """
     number_kysts = randint(5, 15)
-    berries = [randint(0, number_kysts) for _ in range(number_kysts)]
-    max_berries = berries[0]
-    print(berries)
+    print(berries := [randint(0, number_kysts) for _ in range(number_kysts)])
+    max_berries = 0
     for i in range(len(berries)):
-        max_b = berries[i] + berries[i-1] + berries[i-2]
+        max_b = berries[(i-1)%number_kysts] + berries[i%number_kysts] + berries[(i+1)%number_kysts]
         if max_b > max_berries:
             max_berries = max_b
     print(f'Max sum berries: {max_berries}\n')
