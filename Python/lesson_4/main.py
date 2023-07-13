@@ -8,7 +8,8 @@ def check_data(*, message: str) -> str:
         if number.isdigit():
             return number
         else:
-            print('\nНе корректные данные! (Только натуральное число: N > 0...)\nДля выхода нажать Ctrl + C\n')
+            print(
+                '\nНе корректные данные! (Только натуральное число: N > 0...)\nДля выхода нажать Ctrl + C\n')
 
 
 """
@@ -21,10 +22,10 @@ def check_data(*, message: str) -> str:
 
 def repeat_numbers(*, first: int, second: int):
     """ """
-    first_list = [randint(0, 30) for _ in range(first)]
-    second_list = [randint(0, 30) for _ in range(second)]
-    repeat_numbers = set([number for number in first_list if number in second_list])
-    print(f'\n{first_list}\n{second_list}\nRepeat numbers: {sorted(repeat_numbers)}\n')
+    print(first_list := set([randint(0, 30) for _ in range(first)]))
+    print(second_list := set([randint(0, 30) for _ in range(second)]))
+    repeat_numbers = first_list & second_list
+    print(f'Repeat numbers: {sorted(repeat_numbers)}\n')
 
 
 """
@@ -40,8 +41,8 @@ def max_berries():
     number_kysts = randint(5, 15)
     print(berries := [randint(0, number_kysts) for _ in range(number_kysts)])
     max_berries = 0
-    for i in range(len(berries)):
-        max_b = berries[(i-1)%number_kysts] + berries[i%number_kysts] + berries[(i+1)%number_kysts]
+    for i, v in enumerate(berries):
+        max_b = berries[(i-1) % number_kysts] + berries[i % number_kysts] + berries[(i+1) % number_kysts]
         if max_b > max_berries:
             max_berries = max_b
     print(f'Max sum berries: {max_berries}\n')
@@ -52,6 +53,7 @@ def main():
     print(f"\nЗадача 22. Введите натуральные числа\n{'-'*40}")
     repeat_numbers(first=int(check_data(message='Введите первое число')),
                    second=int(check_data(message='Введите второе число')))
+    
     print(f"\nЗадача 24. Максимальное число ягод\n{'-'*40}")
     max_berries()
 
