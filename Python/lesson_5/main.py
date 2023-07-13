@@ -20,8 +20,8 @@ def sum_numbers(*, first: int, second: int):
 
 def main():
     """ """
-    first_number = randint(2, 10)
-    second_number = randint(2, 10)
+    first_number, second_number = randint(2, 10), randint(2, 10)
+
     print(f"\nЗадача 26. Возведение в степнь\n{'-'*40}\n"
           f"Степень числа: {first_number} ** {second_number} -> {exponent_of_number(number=first_number, degree=second_number):_}\n")
 
