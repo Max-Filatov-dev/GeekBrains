@@ -5,10 +5,11 @@ from random import randint
 """
 
 
-def first():
+def ritm_in_phrase():
     """ """
-    exp = input('Enter words: ')
-    print(list(filter(lambda x: x == 'a', exp)))
+    phrase = input('Введите фразу (пара-ра-рам...): ').split()
+    count = list(map(lambda x: x.count('а'), phrase))
+    print('Ритм: Парам пам-пам\n') if len(set(count)) == 1 else print('Нет ритма: Пам парам\n')
 
 
 """
@@ -16,15 +17,20 @@ def first():
 """
 
 
-def second():
+def print_operation_table(operation, num_rows=6, num_columns=6):
     """ """
-    pass
+    # заполяем фукцией operation вложенный массив [[], []]
+    numbers = [[operation(i, j) for j in range(1, num_columns+1)] for i in range(1, num_rows+1)]
+    return list(map(lambda x: print(*x) , numbers))
 
 
 def main():
     """ """
-    # first()
-    second()
+    print(f"\nЗадача 34. Ритм в стихах\n{'-'*40}")
+    ritm_in_phrase()
+
+    print(f"\nЗадача 36. Элемент по номеру строки и столбца\n{'-'*50}")
+    print_operation_table(operation=lambda x, y: x*y)
 
 
 if __name__ == '__main__':
