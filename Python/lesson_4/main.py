@@ -8,8 +8,7 @@ def check_data(*, message: str) -> str:
         if number.isdigit():
             return number
         else:
-            print(
-                '\nНе корректные данные! (Только натуральное число: N > 0...)\nДля выхода нажать Ctrl + C\n')
+            print('\nНе корректные данные! (Только натуральное число: N > 0...)\nДля выхода нажать Ctrl + C\n')
 
 
 """
