@@ -98,7 +98,7 @@ def main():
                 if tmp_data:
                     print(f'\nДобавить контакт\n{"-"*30}')
                     resp_new = new_contact()
-                    next_number = max([i[0] for i in tmp_data['contacts']])+1
+                    next_number = max(tmp_data['contacts'])[0]+1
                     tmp_data['contacts'].append([next_number, *resp_new]) if resp_new else None
                     print(f'{"-"*30}\nДобавлен контакт: {next_number} {resp_new}\n')
                 else:
