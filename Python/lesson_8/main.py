@@ -4,6 +4,7 @@ import json
 Задача 38: Дополнить телефонный справочник возможностью изменения и удаления данных. Пользователь также может ввести имя или фамилию, и Вы должны реализовать функционал для изменения и удаления данных
 """
 
+path = 'phone_book.json'
 main_dict = {'menu': ('1. Открыть файл', '2. Показать контакты', '3. Найти контакт','4. Добавить контакт',
                       '5. Изменить контакт', '6. Удалить контакт', '7. Сохранить файл', '8. Вернуть файл к шаблону', '9. Выход'),
              'contacts': [(1, 'Филатов Максим', 123, 'Программист'), (2, 'Морозов Евгений', 456, 'Инженер')]}
@@ -23,7 +24,7 @@ def check_data() -> str:
 
 def open_file():
     """ """
-    with open('lesson_8/phone_book.json') as pb:
+    with open(path) as pb:
         data = json.load(pb)
     return data
 
@@ -66,7 +67,7 @@ def del_contact(all_cont: list):
 
 def save_file(save_data: dict):
     """ """
-    with open('lesson_8/phone_book.json', 'w', encoding='utf-8') as pb:
+    with open(path, 'w', encoding='utf-8') as pb:
         json.dump(save_data, pb, indent=4, ensure_ascii=False)
 
 
