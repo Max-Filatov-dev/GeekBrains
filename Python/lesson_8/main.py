@@ -6,7 +6,7 @@ import json
 
 main_dict = {'menu': ('1. Открыть файл', '2. Показать контакты', '3. Найти контакт','4. Добавить контакт',
                       '5. Изменить контакт', '6. Удалить контакт', '7. Сохранить файл', '8. Вернуть файл к шаблону', '9. Выход'),
-             'contacts': [(1, 'Филатов Максим', 123, 'Software'), (2, 'Морозов Евгений', 456, 'Engeenies')]}
+             'contacts': [(1, 'Филатов Максим', 123, 'Программист'), (2, 'Морозов Евгений', 456, 'Инженер')]}
 
 
 def check_data() -> str:
@@ -30,7 +30,7 @@ def open_file():
 
 def new_contact():
     """ """
-    name_fio = input('\nВведите ФИО: ')
+    name_fio = input('Введите ФИО: ')
     phone = input('Введите телефон: ')
     comment = input('Введите комментарий: ')
     return name_fio, phone, comment
@@ -38,10 +38,10 @@ def new_contact():
 
 def change_contact(contacts: list):
     """ """
-    change_name = input('\nВведите имя: ').lower()
+    change_name = input('Введите имя: ').lower()
     select = [k for k in contacts if change_name in k[1].lower()]
     if select:
-        print(f'{"-"*30}\n{select[0]}')
+        print(f'{"-"*30}\n{select[0]}\n')
         resp = select[0][0], *new_contact()
         contacts[resp[0]-1] = resp
         return contacts
@@ -49,14 +49,17 @@ def change_contact(contacts: list):
         print(f'{"-"*30}\nНет таких контактов!')
 
     
-def del_contact(del_cont: list):
+def del_contact(all_cont: list):
     """ """
-    del_name = input('\nВведите имя: ').lower()
-    del_serch = [k for k in del_cont if del_name in k[1].lower()]
-    if del_serch:
-        del_cont.pop(del_serch[0][0]-1)
+    del_name = input('Введите имя: ').lower()
+    del_serch = [k for k in all_cont if del_name in k[1].lower()]
+    del_msg = input(f'Удалить контакт: {del_serch[0]}? (y/n) ') if del_serch else None
+    if del_serch and del_msg == 'y':
+        all_cont.pop(del_serch[0][0]-1)
         print(f'Контак удален: {del_serch[0]}')
-        return del_cont
+        return all_cont
+    elif del_serch and del_msg == 'n':
+        print(f'{"-"*30}\nУдаление отменено!')
     else:
         print(f'{"-"*30}\nНет таких контактов!')
 
@@ -87,11 +90,12 @@ def main():
                 if tmp_data:
                     search_name = input(f'\nНайти контакт\n{"-"*20}\nВведите имя: ').lower()
                     result_search = [k for k in tmp_data['contacts'] if search_name in k[1].lower()]
-                    print(f'{"-"*30}\n{result_search}') if result_search else print(f'{"-"*30}\nНет таких контактов!')
+                    print(f'{"-"*30}\n{result_search[0]}') if result_search else print(f'{"-"*30}\nНет таких контактов!')
                 else:
                     print(f'\n{"-"*30}\nНеобходимо открыть файл!\n{"-"*30}\n')
             case 4:
                 if tmp_data:
+                    print(f'\nДобавить контакт\n{"-"*30}')
                     resp_new = new_contact()
                     next_number = max([i[0] for i in tmp_data['contacts']])+1
                     tmp_data['contacts'].append([next_number, *resp_new]) if resp_new else None
@@ -100,21 +104,29 @@ def main():
                     print(f'\n{"-"*30}\nНеобходимо открыть файл!\n{"-"*30}\n')
             case 5:
                 if tmp_data:
+                    print(f'\nИзменить контакт\n{"-"*30}')
                     resp_change = change_contact(contacts=tmp_data['contacts'])
                     tmp_data['contacts'] = resp_change if resp_change else tmp_data['contacts']
                 else:
                     print(f'\n{"-"*30}\nНеобходимо открыть файл!\n{"-"*30}\n')
             case 6:
                 if tmp_data:
-                    resp_del = del_contact(del_cont=tmp_data['contacts'])
+                    print(f'\nУдалить контакт\n{"-"*30}')
+                    resp_del = del_contact(all_cont=tmp_data['contacts'])
                     tmp_data['contacts'] = resp_del if resp_del else tmp_data['contacts']
                 else:
                     print(f'\n{"-"*30}\nНеобходимо открыть файл!\n{"-"*30}\n')
             case 7:
-                save_file(save_data=tmp_data) if tmp_data else print(f'\n{"-"*30}\nНеобходимо открыть файл!\n{"-"*30}\n')
+                print(f'\nСохранить данные\n{"-"*30}')
+                save = input('Уверены что хотите перезаписать файл? (y/n) ')
+                if tmp_data and save == 'y':
+                    save_file(save_data=tmp_data)
+                    print(f'\n{"-"*20}\nФайл перезаписан!\n{"-"*20}\n')
+                    break
             case 8:
-                sogl = input('Уверены что хотите перезаписать файл? (y/n) ')
-                if sogl == 'y':
+                print(f'\nВозврат файла к шаблону\n{"-"*30}')
+                replace = input('Уверены что хотите перезаписать файл? (y/n) ')
+                if replace == 'y':
                     save_file(save_data=main_dict)
                     print(f'\n{"-"*20}\nФайл перезаписан!\n{"-"*20}\n')
                     break
