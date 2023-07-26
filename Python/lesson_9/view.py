@@ -46,7 +46,7 @@ def search_contact(ser_data: dict, show=True):
     """ """
     result_search = {"contacts": {}}
     search_name = input(text.menu_search_contact).lower()
-    add = (
+    (
         [
             result_search["contacts"].update({k: item})
             for k, item in ser_data["contacts"].items()
@@ -62,7 +62,11 @@ def search_contact(ser_data: dict, show=True):
     else:
         print(text.not_contact)
 
-
-def print_msg(msg: str, dop_msg=None):
+def approval(app_msg: str):
     """ """
-    print(f'{"-"*40}\n{msg}\n{dop_msg}') if dop_msg else print(msg)
+    appr = input(f'\n{app_msg} (y/n): ')
+    return appr
+
+def print_msg(smp_msg: str, dop_msg=None):
+    """ """
+    print(f'{"-"*40}\n{smp_msg}\n{dop_msg}') if dop_msg else print(smp_msg)

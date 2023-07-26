@@ -27,26 +27,11 @@ class PhoneBook:
             next_uid = int(max(self.phone_book["contacts"])) + 1 if not index else index
             self.phone_book["contacts"][str(next_uid)] = add_data
 
-    # def change_contact(self, all_contacts: dict, chg_data: dict):
-    #     """ """
-    #     print(chg_data)
+    def del_contact(self, del_data: list):
+        """ """
+        [self.phone_book["contacts"].pop(key) for key in del_data]
 
-    # def del_contact(all_cont: list):
-    #     """ """
-    #     del_name = input('Введите имя: ').lower()
-    #     del_serch = [k for k in all_cont if del_name in k[1].lower()]
-    #     del_msg = input(
-    #         f'Удалить контакт: {del_serch[0]}? (y/n) ') if del_serch else None
-    #     if del_serch and del_msg == 'y':
-    #         all_cont.pop(del_serch[0][0]-1)
-    #         print(f'Контак удален: {del_serch[0]}')
-    #         return all_cont
-    #     elif del_serch and del_msg == 'n':
-    #         print(f'{"-"*30}\nУдаление отменено!')
-    #     else:
-    #         print(f'{"-"*30}\nНет таких контактов!')
-
-    # def save_file(save_data: dict):
-    #     """ """
-    #     with open(path_pb, 'w', encoding='utf-8') as pb:
-    #         json.dump(save_data, pb, indent=4, ensure_ascii=False)
+    def save_file(self):
+        """ """
+        with open(self.path_pb, "w", encoding="utf-8") as pb:
+            json.dump(self.phone_book, pb, indent=4, ensure_ascii=False)
