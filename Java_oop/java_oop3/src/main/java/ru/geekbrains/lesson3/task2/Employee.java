@@ -31,6 +31,7 @@ public abstract class Employee implements Comparable<Employee> {
      * @return
      */
     public abstract double calculateSalary();
+
     public abstract int ageSort();
 
 
@@ -53,11 +54,6 @@ public abstract class Employee implements Comparable<Employee> {
             return name.compareTo(o.name);
         }
         return surNameRes;
-
-//        int ageRes = age.compareTo(o.age);
-//        if (ageRes == 0) {
-//            return age.compareTo(o.age);
-//        }
-//        return ageRes;
     }
+
 }

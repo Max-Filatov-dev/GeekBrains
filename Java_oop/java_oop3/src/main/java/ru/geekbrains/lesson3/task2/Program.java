@@ -42,17 +42,19 @@ public class Program {
     public static void main(String[] args) {
         Employee[] employees = generateEmployees(12);
 
-//        for (Employee employee : employees) {
-//            System.out.println(employee);
-//        }
+        /*
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+        */
 
+        // Сортировка по взорасту.
         Arrays.sort(employees, new AgeComparator());
         System.out.println();
 
         for (Employee employee : employees) {
             System.out.println(employee);
         }
-
     }
 
 }

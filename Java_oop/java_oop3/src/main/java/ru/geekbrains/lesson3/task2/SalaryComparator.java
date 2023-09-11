@@ -11,4 +11,5 @@ public class SalaryComparator implements Comparator<Employee> {
         /*return o1.calculateSalary() == o2.calculateSalary() ? 0 :
                 o1.calculateSalary() > o2.calculateSalary() ? 1 : -1;*/
     }
+
 }

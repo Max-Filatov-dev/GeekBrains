@@ -3,7 +3,7 @@ package ru.geekbrains.lesson3.task2;
 /**
  * Обычный рабочий (фулл-тайм)
  */
-public class Worker extends Employee{
+public class Worker extends Employee {
     public Worker(String name, String surName, int age, double salary) {
         super(name, surName, age, salary);
     }
