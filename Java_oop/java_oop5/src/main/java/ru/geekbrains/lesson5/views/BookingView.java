@@ -28,7 +28,7 @@ public class BookingView implements View {
         if (reservationNo > 0)
             System.out.printf("\n%s, столик #%d успешно забронирован %s. Номер вашей брони: #%d\n", name, tableNo, date, reservationNo);
         else
-            System.out.printf("\n%s, не удалось забронировать столик #%d. Попробуйте выполнить операцию позже.", name, reservationNo);
+            System.out.printf("\n%s, не удалось забронировать столик #%d. Попробуйте выполнить операцию позже.\n", name, reservationNo);
     }
 
     public void reservationTable(Date orderDate, int tableNo, String name) {
@@ -40,13 +40,13 @@ public class BookingView implements View {
      *
      * @param oldReservation  идентификатор бронирования (старый)
      * @param reservationDate дата бронирования
-     * @param tableNo         номер столика
+     * @param newtableNo         номер столика
      * @param name            Имя
      */
-    public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
+    public void changeReservationTable(int oldReservation, int oldTableNo, Date reservationDate, int newtableNo, String name) {
         //TODO: Реализовать самостоятельно в рамках домашней работы
 //        System.out.printf("\n%s, Ваша прежняя бронь №%d отменена!\n", name, oldReservation);
-        observer.chReservationTable(oldReservation, reservationDate, tableNo, name);
+        observer.chReservationTable(oldReservation, oldTableNo, reservationDate, newtableNo, name);
     }
 
 }
