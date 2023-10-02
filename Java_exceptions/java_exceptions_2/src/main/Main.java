@@ -17,17 +17,16 @@ public class Main {
         System.out.println("Lesson 2 Task 1");
         System.out.println("Вы ввели: " + homeWork.inputNumber());
 
-//        // Homework task 2
-//        System.out.println("\nLesson 2 Task 2");
-//        homeWork.correctingCode();
-//
-//        // Homework task 3
-//        System.out.println("\nLesson 2 Task 3");
-//        homeWork.correctingCodeSecond();
+        // Homework task 2
+        System.out.println("\nLesson 2 Task 2");
+        homeWork.correctingCode();
+
+        // Homework task 3
+        System.out.println("\nLesson 2 Task 3");
+        homeWork.correctingCodeSecond();
 
         // Homework task 4
         System.out.println("\nLesson 2 Task 4");
-//        homeWork.emptyLine();
         System.out.println("Вы ввели: " + homeWork.emptyLine());
 
     }
