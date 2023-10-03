@@ -7,7 +7,6 @@ public class Main {
         String[] array = input.getData();
         Parse parse = new Parse();
         boolean responseParse = parse.parseData(array);
-        System.out.println(responseParse);
         if (responseParse) {
             Write write = new Write();
             write.writeData(array);

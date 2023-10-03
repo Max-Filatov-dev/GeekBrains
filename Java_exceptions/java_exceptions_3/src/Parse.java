@@ -1,5 +1,3 @@
-import com.sun.source.tree.BreakTree;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,10 +10,10 @@ public class Parse {
         String lastName = array[1];
         String patronymic = array[2];
 
-        SimpleDateFormat format = new SimpleDateFormat("dd.mm.yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
         Date birthdate;
         try {
-            birthdate = format.parse(array[3]);
+            birthdate = dateFormat.parse(array[3]);
         } catch (ParseException e) {
             throw new ParseException("Неверный формат даты рождения", e.getErrorOffset());
         }
@@ -32,7 +30,7 @@ public class Parse {
             throw new RuntimeException("Неверно введен пол");
         }
 
-        System.out.printf("Parse result: %s, %s, %s, %s, %s, %s", lastName, firstName, patronymic, birthdate, phone, gender);
+        System.out.printf("Parse result: %s, %s, %s, %s, %s, %s", lastName, firstName, patronymic, dateFormat.format(birthdate), phone, gender);
         return true;
     }
 }
