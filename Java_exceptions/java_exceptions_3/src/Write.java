@@ -1,14 +1,14 @@
-import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Write {
 
-    public void writeData(ArrayList arrayList) {
+    public void writeData(String[] data) {
 
         try {
-            FileWriter writer = new FileWriter("notes3.txt", false);
-            writer.write(arrayList.iterator().toString());
+            FileWriter writer = new FileWriter(data[0], false);
+            writer.write(Arrays.toString(data));
             writer.close();
 
         } catch (IOException ex) {
