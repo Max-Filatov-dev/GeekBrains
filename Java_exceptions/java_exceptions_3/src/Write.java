@@ -6,13 +6,15 @@ public class Write {
 
     public void writeData(String[] data) {
 
+        String filePath = "/Volumes/DATA/Development/GeekBrains/Java_exceptions/java_exceptions_3/src/files/" + data[0] + ".txt";
+
         try {
-            FileWriter writer = new FileWriter(data[0], true);
+            FileWriter writer = new FileWriter(filePath, true);
             writer.write(Arrays.toString(data) + "\n");
             writer.close();
 
         } catch (IOException ex) {
-            System.out.println(ex.getStackTrace());
+            ex.printStackTrace();
         }
     }
 }

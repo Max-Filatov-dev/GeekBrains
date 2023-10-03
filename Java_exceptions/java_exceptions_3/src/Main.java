@@ -1,7 +1,6 @@
-import java.text.ParseException;
 
 public class Main {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
 
         Input input = new Input();
         String[] array = input.getData();
@@ -11,6 +10,9 @@ public class Main {
             Write write = new Write();
             write.writeData(array);
         }
+
+        Read read = new Read();
+        read.readData("Filatov");
 
     }
 }

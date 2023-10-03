@@ -4,25 +4,25 @@ import java.util.Date;
 
 public class Parse {
 
-    public boolean parseData(String[] array) throws ParseException {
+    public boolean parseData(String[] array) {
 
-        String firstName = array[0];
-        String lastName = array[1];
+        String lastName = array[0];
+        String firstName = array[1];
         String patronymic = array[2];
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
-        Date birthdate;
+        Date birthdate = null;
         try {
             birthdate = dateFormat.parse(array[3]);
         } catch (ParseException e) {
-            throw new ParseException("Неверный формат даты рождения", e.getErrorOffset());
+            System.out.println("Неверный формат даты рождения" + e.getErrorOffset());
         }
 
-        int phone;
+        int phone = 0;
         try {
             phone = Integer.parseInt(array[4]);
         } catch (NumberFormatException e) {
-            throw new NumberFormatException("Неверный формат телефона");
+            e.printStackTrace();
         }
 
         String gender = array[5];
@@ -30,7 +30,7 @@ public class Parse {
             throw new RuntimeException("Неверно введен пол");
         }
 
-        System.out.printf("Parse result: %s, %s, %s, %s, %s, %s", lastName, firstName, patronymic, dateFormat.format(birthdate), phone, gender);
+        System.out.printf("\nParse result: %s, %s, %s, %s, %s, %s\n", lastName, firstName, patronymic, dateFormat.format(birthdate), phone, gender);
         return true;
     }
 }
